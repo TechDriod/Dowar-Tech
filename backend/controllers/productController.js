@@ -21,9 +21,10 @@ const getProducts = async (req, res, next) => {
     }
 
     if (category) query.category = { $in: category.split(',') };
-    if (gpu) query.gpu = { $in: gpu.split(',').map((g) => new RegExp(g, 'i')) };
-    if (cpu) query.cpu = { $in: cpu.split(',').map((c) => new RegExp(c, 'i')) };
-    if (ram) query.ram = { $in: ram.split(',').map((r) => new RegExp(r, 'i')) };
+    const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (gpu) query.gpu = { $in: gpu.split(',').map((g) => new RegExp(escapeRegex(g.trim()), 'i')) };
+    if (cpu) query.cpu = { $in: cpu.split(',').map((c) => new RegExp(escapeRegex(c.trim()), 'i')) };
+    if (ram) query.ram = { $in: ram.split(',').map((r) => new RegExp(escapeRegex(r.trim()), 'i')) };
 
     if (minPrice || maxPrice) {
       query.price = {};
