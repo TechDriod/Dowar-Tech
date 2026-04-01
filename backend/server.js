@@ -7,6 +7,11 @@ const errorHandler = require('./middleware/errorHandler');
 
 dotenv.config();
 
+if (!process.env.JWT_SECRET) {
+  console.error('FATAL: JWT_SECRET environment variable is not set. Refusing to start.');
+  process.exit(1);
+}
+
 connectDB();
 
 const app = express();

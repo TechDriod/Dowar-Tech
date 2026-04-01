@@ -78,9 +78,7 @@ const ProductDetail = () => {
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
 
   const handleAddToCart = () => {
-    for (let i = 0; i < qty; i++) {
-      if (i === 0) addToCart(product, qty);
-    }
+    addToCart(product, qty);
   };
 
   return (
