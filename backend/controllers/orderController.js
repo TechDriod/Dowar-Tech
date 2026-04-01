@@ -1,5 +1,6 @@
 const Order = require('../models/Order');
 const Product = require('../models/Product');
+const mongoose = require('mongoose');
 
 // @desc    Create order
 // @route   POST /api/orders
@@ -15,6 +16,9 @@ const createOrder = async (req, res, next) => {
     const validatedItems = [];
 
     for (const item of orderItems) {
+      if (!mongoose.Types.ObjectId.isValid(item.product)) {
+        return res.status(400).json({ success: false, message: 'Invalid product ID' });
+      }
       const product = await Product.findById(item.product);
       if (!product) {
         return res.status(404).json({ success: false, message: `Product ${item.product} not found` });

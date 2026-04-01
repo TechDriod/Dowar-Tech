@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiSave, FiUser, FiMail, FiMapPin } from 'react-icons/fi';
+import { FiSave, FiUser, FiMapPin } from 'react-icons/fi';
 import { useAuth } from '../context/AuthContext';
 import { updateUserProfile } from '../services/api';
 import toast from 'react-hot-toast';

@@ -1,5 +1,6 @@
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
+const mongoose = require('mongoose');
 
 // @desc    Get user cart
 // @route   GET /api/cart
@@ -20,6 +21,10 @@ const getCart = async (req, res, next) => {
 const addToCart = async (req, res, next) => {
   try {
     const { productId, qty = 1 } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+      return res.status(400).json({ success: false, message: 'Invalid product ID' });
+    }
 
     const product = await Product.findById(productId);
     if (!product) {

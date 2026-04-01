@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { FiFilter, FiX, FiChevronDown } from 'react-icons/fi';
+import { FiFilter, FiChevronDown } from 'react-icons/fi';
 import { getProducts } from '../services/api';
 import SearchBar from '../components/SearchBar';
 import FilterSidebar from '../components/FilterSidebar';
@@ -14,7 +14,7 @@ const SORT_OPTIONS = [
 ];
 
 const Products = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');

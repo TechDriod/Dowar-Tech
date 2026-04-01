@@ -1,10 +1,14 @@
 const Review = require('../models/Review');
 const Product = require('../models/Product');
+const mongoose = require('mongoose');
 
 // @desc    Get reviews for a product
 // @route   GET /api/reviews/:productId
 const getProductReviews = async (req, res, next) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.productId)) {
+      return res.status(400).json({ success: false, message: 'Invalid product ID' });
+    }
     const reviews = await Review.find({ product: req.params.productId })
       .populate('user', 'name avatar')
       .sort({ createdAt: -1 });
@@ -19,6 +23,10 @@ const getProductReviews = async (req, res, next) => {
 const createReview = async (req, res, next) => {
   try {
     const { productId, rating, title, comment } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+      return res.status(400).json({ success: false, message: 'Invalid product ID' });
+    }
 
     const product = await Product.findById(productId);
     if (!product) {

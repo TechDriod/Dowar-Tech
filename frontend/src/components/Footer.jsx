@@ -21,10 +21,10 @@ const Footer = () => {
               Your ultimate destination for premium gaming PCs. From budget builds to ultra high-end machines, we've got your perfect gaming rig.
             </p>
             <div className="flex gap-4 mt-4">
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors"><FiTwitter size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors"><FiInstagram size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors"><FiYoutube size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors"><FiGithub size={20} /></a>
+              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors"><FiTwitter size={20} /></a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors"><FiInstagram size={20} /></a>
+              <a href="https://youtube.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors"><FiYoutube size={20} /></a>
+              <a href="https://github.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors"><FiGithub size={20} /></a>
             </div>
           </div>
 
@@ -54,9 +54,9 @@ const Footer = () => {
             <ul className="space-y-2">
               {['FAQ', 'Shipping Policy', 'Returns & Warranty', 'Technical Support', 'Contact Us'].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 text-sm transition-colors">
+                  <span className="text-gray-400 text-sm cursor-default">
                     {item}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>
